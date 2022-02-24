@@ -375,3 +375,8 @@ html,body{
     background-color: #222;
     overflow: hidden;
 }
+.text-overflow{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}

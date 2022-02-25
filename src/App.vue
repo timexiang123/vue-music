@@ -25,6 +25,7 @@ export default {
 
 <style>
 @import "./assets/css/normalize.css";
+@import "./assets/css/animate.min.css";
 .middle-container{
   display: flex;
   justify-content: center;

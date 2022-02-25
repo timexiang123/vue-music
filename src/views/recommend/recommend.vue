@@ -1,5 +1,5 @@
 <template>
-  <div class="recommend">
+  <div class="recommend animate__animated animate__fadeIn">
     <van-skeleton title :row="100" :loading="loading"/>
     <scroll>
       <!--  轮播图-->

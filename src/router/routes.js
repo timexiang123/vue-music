@@ -12,6 +12,10 @@ export default [
         component:()=>import("../views/singer/singer-list")
     },
     {
+        path:"/singer-detail/:id",
+        component:()=>import("../views/singer/singer-detail")
+    },
+    {
         path:"/top-list",
         component:()=>import("../views/top/top-list")
     },

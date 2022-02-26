@@ -1,9 +1,12 @@
 <template>
   <div id="app">
     <v-header>
-      <div class="middle-container">
+      <div class="middle-container" slot="middle">
         <img src="./assets/images/logo.png" alt="图标" />
         <span>Chicken Music</span>
+      </div>
+      <div class="right-container" slot="right">
+        <img src="./assets/images/person.png" alt="用户中心" />
       </div>
     </v-header>
     <tabs></tabs>

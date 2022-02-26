@@ -1,11 +1,13 @@
 <template>
 <div class="header-container">
-  <div class="left"></div>
+  <div class="left">
+   <slot name="left"></slot>
+  </div>
   <div class="middle">
-    <slot></slot>
+    <slot name="middle"></slot>
   </div>
   <div class="right">
-    <img src="../../assets/images/person.png" alt="用户中心" />
+    <slot name="right"></slot>
   </div>
 </div>
 </template>
@@ -26,6 +28,9 @@ export default {
   height:44px;
 }
 .header-container > div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height:100%;
 }
 .left,.right{

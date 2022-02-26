@@ -2,11 +2,11 @@
   <div class="singer-list animate__animated animate__fadeIn">
     <van-skeleton title :row="100" :loading="loading"/>
     <scroll :probe-type="3" ref="scroll" @scroll="handleScroll">
-      <div ref="singerWrapper" class="singer-wrapper">
-        <div class="outer-wrapper" v-for="(item,index) in singerList" :key="item.title">
+      <div ref="singerWrapper" class="singer-wrapper" v-if="!loading">
+        <div class="outer-wrapper" v-for="item in singerList" :key="item.title">
           <div class="singer-title"> {{ item.title }}</div>
           <div class="inner-wrapper">
-            <div class="singer-item" v-for="singer in item.list" :key="singer.id">
+            <div class="singer-item" v-for="singer in item.list" :key="singer.id" @click="toSingerDetail(singer.id)">
               <img v-lazy="singer.picUrl" alt="歌手封面图"/>
               <span class="text-overflow">{{ singer.name }}</span>
             </div>
@@ -47,6 +47,7 @@ export default {
   methods: {
     //计算各区域高度
     calcAreaHeight() {
+      this.loading = false;
       let singerWrapper = this.$refs.singerWrapper;
       if (singerWrapper) {
         let initHeight = 0;
@@ -80,6 +81,10 @@ export default {
         scroll.bs.scrollTo(0, -this.areaHeight[this.activeIndex], 500)
       }
     },
+    //去歌手详情页
+    toSingerDetail(id){
+      this.$router.push("/singer-detail/"+id);
+    },
     //生成字符数组
     generateCharArr() {
       this.charArr.push(-1);
@@ -104,9 +109,6 @@ export default {
     },
     async getSingerList(initial) {
       const res = await getSingerList(initial);
-      if (this.loading) {
-        this.loading = false;
-      }
       if (res.artists && res.artists.length) {
         if (initial == -1) {
           this.list.push({

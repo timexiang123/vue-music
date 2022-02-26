@@ -17,3 +17,15 @@ export function getSingerList(initial){
         url:"/artist/list?limit=10&type=-1&area=-1&initial="+initial
     });
 }
+//获取歌手详情数据
+export function getSingerDetail(id){
+    return request({
+        url:"/artist/detail?id="+id
+    })
+}
+//获取歌手50首歌曲
+export function getSingerSongs(id){
+    return request({
+        url:"/artist/songs?id="+id
+    })
+}

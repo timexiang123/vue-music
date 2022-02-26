@@ -7,7 +7,7 @@ export default function request(params) {
     } else {
         //创建axios实例
         const instance = axios.create({
-            baseURL: "http://localhost:3000",
+            baseURL: "http://192.168.1.167:3000",
             timeout: 6666
         });
         // 添加请求拦截器

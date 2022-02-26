@@ -13,7 +13,7 @@ export default {
   name: "tabs",
   data(){
     return {
-      currentTabIndex:0,
+      currentTabIndex:-1,
       tabList:[
         {
           path:"/recommend",
@@ -37,8 +37,25 @@ export default {
   methods:{
     //切换tab类型
     switchTab(path,index){
+      if(this.currentTabIndex == index) return;
       this.currentTabIndex = index;
       this.$router.push(path);
+    }
+  },
+  watch:{
+    '$route.path':{
+      handler(val){
+        if(val == '/recommend'){
+          this.currentTabIndex = 0
+        }else if(val == '/singer'){
+          this.currentTabIndex = 1;
+        }else if(val == '/top-list'){
+          this.currentTabIndex =2;
+        }else if(val == '/search'){
+          this.currentTabIndex =3;
+        }
+      },
+      immediate:true
     }
   }
 }

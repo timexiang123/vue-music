@@ -17,14 +17,25 @@ export default {
       bs:null
     }
   },
+  props:{
+    probeType:{
+      type:Number,
+      default:0
+    }
+  },
   mounted() {
     if(this.$refs.scroll){
       this.bs = new BScroll(this.$refs.scroll,{
-        probeType:3,
+        probeType:this.probeType,
         click:true,
         pullUpLoad:true,
         observeDOM:true
-      })
+      });
+      if(this.probeType){
+        this.bs.on('scroll',(pos)=>{
+          this.$emit('scroll',-pos.y)
+        });
+      }
     }
   }
 }
